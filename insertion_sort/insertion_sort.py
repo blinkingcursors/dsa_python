@@ -11,14 +11,21 @@ for i in range(1, 11):
     random_array.append(random.randint(-100000000, 100000000))
 
 
-def insertion_sort(list):
+def insertion_sort_ascending(list):
     for j in range(1, len(list)):
-        # print("j:", j)
         key = list[j]
-        # print("key:", key)
         i = j-1
-        # print("i:", i)
-        while i >= 0 and list[i] > key:
+        while i >=0 and list[i] > key:
+            list[i+1] = list[i]
+            i = i-1
+        list[i+1] = key
+    return list
+
+def insertion_sort_descending(list):
+    for j in range(1, len(list)):
+        key = list[j]
+        i = j-1
+        while i >=0 and list[i] < key:
             list[i+1] = list[i]
             i = i-1
         list[i+1] = key
@@ -26,5 +33,7 @@ def insertion_sort(list):
 
 
 if __name__ == '__main__':
+    # list = [5, 2, 4, 6, 1, 3]
     print("Unsorted list:", random_array)
-    print("Sorted list:", insertion_sort(random_array))
+    print("Sorted list ascending:", insertion_sort_ascending(random_array))
+    print("Sorted list descending:", insertion_sort_descending(random_array))
